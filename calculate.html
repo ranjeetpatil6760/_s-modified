@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+    <script>
+        $(document).on("input", "input:text", function() {
+            var strClass = $(this).prop("class");
+            var intTotal = 1;
+            $.each($("input:text." + strClass), function() {
+                var intInputValue = parseInt($(this).val());
+                if (!isNaN(intInputValue)) {
+                    intTotal = intTotal * intInputValue;
+                }
+            });
+            $(this).parent("td").siblings("td:last").text(intTotal);
+        });
+
+    </script>
+
+</head>
+
+
+
+<body>
+    <table>
+        <tr>
+           <th>Device</th>
+            <th>Watt </th>
+            <th>Quantity 2</th>
+            <th>TOTAL</th>
+        </tr>
+        
+        <tr>
+           <td>Fan</td>
+            <td><input type="text" class="productA"></td>
+            <td><input type="text" class="productA"></td>
+            <td><input type="text" class="productA" disabled></td>
+
+        </tr>
+        <tr>
+           <td>Bulb</td>
+           
+            <td><input type="text" class="productB"></td>
+            <td><input type="text" class="productB"></td>
+            <td><input type="text" class="productB" disabled></td>
+
+
+        </tr>
+        
+    </table>
+</body>
+</html>
